@@ -33,6 +33,8 @@ def get_datetime():
 
     return str(time_srt)
 
+def get_weather():
+    pass
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
