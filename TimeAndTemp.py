@@ -4,20 +4,19 @@ from datetime import datetime
 import xml.etree.ElementTree as ET
 import urllib2
 
-
 app = Flask(__name__)
 
-@app.route("/", methods=['GET','POST'])
 
+@app.route("/", methods=['GET', 'POST'])
 def voice_response():
     """Respond to incoming requests."""
     resp = twiml.Response()
     # give time
-    resp.say(get_datetime())
-    # pause 3 seconds between time and temp
-    resp.pause(3)
+    resp.say(get_datetime(), voice='female', language='us')
+    # pause 1 seconds between time and temp
+    resp.pause(length=1)
     # give temp
-    resp.say(get_weather())
+    resp.say(get_weather(), voice='female', language='us')
     return str(resp)
 
 
@@ -40,6 +39,7 @@ def get_datetime():
 
     return str(time_str)
 
+
 def get_weather():
     """Get and build out weather string. Uses NOAA XML."""
     # gets weather xml from noaa web. should replace KLBF with local call site.
@@ -56,6 +56,6 @@ def get_weather():
     temp_str = 'The current temperature is {} degrees.'.format(curr_temp)
     return str(temp_str)
 
+
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
-
