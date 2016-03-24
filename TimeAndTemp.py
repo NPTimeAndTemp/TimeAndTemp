@@ -29,12 +29,12 @@ def get_datetime():
     month = now.month
 
     if hour >= 13:
-     hour -= 12
-    period = 'p m'
+        hour -= 12
+        period = 'p m'
     elif hour = 12:
-     period = 'p m'
+        period = 'p m'
     else:
-     period = 'a m'
+        period = 'a m'
 
     time_str = 'Today is {} {}. The current time is {} {} {}. '.format(month, day, hour, minute, period)
 
