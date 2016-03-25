@@ -37,9 +37,9 @@ def get_datetime():
         period = 'a m'
 
     if minute == 0:
-        minute = str("o clock")
+        minute = 'o clock'
     elif minute < 10:
-        minute = "o "+str(minute)
+        minute = 'o {}'.format(minute)
     else:
         pass
 
