@@ -36,6 +36,13 @@ def get_datetime():
     else:
         period = 'a m'
 
+    if minute == 0:
+        minute = str("o clock")
+    elif minute < 10:
+        minute = "o "+str(minute)
+    else:
+        pass
+
     time_str = 'Today is {} {}. The current time is {} {} {}. '.format(month, day, hour, minute, period)
 
     return str(time_str)
