@@ -31,7 +31,7 @@ def get_datetime():
     if hour >= 13:
         hour -= 12
         period = 'p m'
-    elif hour = 12:
+    elif hour == 12:
         period = 'p m'
     else:
         period = 'a m'
