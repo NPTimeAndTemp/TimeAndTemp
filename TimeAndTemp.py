@@ -71,8 +71,8 @@ def get_weather():
 def get_intro():
     """Returns mp3 add to play at intro."""
     # check to see if file exists
-    if os.path.isfile('./static/Add_Intro/Intro.mp3'):
-        return './static/Add_Intro/Intro.mp3'
+    if os.path.isfile('./static/intro/Intro.mp3'):
+        return './static/intro/Intro.mp3'
     # if the file doesn't exist, one wait tone will be passed
     else:
         return 'digits = "w"'
