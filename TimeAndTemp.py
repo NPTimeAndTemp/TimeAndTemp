@@ -27,18 +27,11 @@ def voice_response():
 def get_datetime():
     """Get and Build out date time string"""
     now = datetime.now()
-    hour = now.hour
+    hour = datetime.strftime(now,"%I")
     minute = now.minute
     day = now.day
-    month = now.month
-
-    if hour >= 13:
-        hour -= 12
-        period = 'p m'
-    elif hour == 12:
-        period = 'p m'
-    else:
-        period = 'a m'
+    month = datetime.strftime(now,"%B")
+    period = datetime.strftime(now,"%p")
 
     if minute == 0:
         minute = 'o clock'
