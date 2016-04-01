@@ -30,6 +30,7 @@ def get_datetime():
     hour = datetime.strftime(now,"%I")
     minute = now.minute
     day = now.day
+    #day = lambda n: "%d%s" % (n,"tsnrhtdd"[(n/10%10!=1)*(n%10<4)*n%10::4])
     month = datetime.strftime(now,"%B")
     period = datetime.strftime(now,"%p")
 
