@@ -4,7 +4,7 @@ from datetime import datetime
 import xml.etree.ElementTree as ET
 import urllib2
 import os.path
-
+from Dates import Dates
 
 app = Flask(__name__)
 
@@ -26,12 +26,16 @@ def voice_response():
 
 def get_datetime():
     """Get and Build out date time string"""
+    # set now as current time
     now = datetime.now()
-    hour = datetime.strftime(now,"%I")
+    # set and format hour month and period (am/pm)
+    hour = datetime.strftime(now, '%I')
+    month = datetime.strftime(now, '%B')
+    period = datetime.strftime(now, '%p')
+
     minute = now.minute
-    day = now.day
-    month = datetime.strftime(now,"%B")
-    period = datetime.strftime(now,"%p")
+    # uses dates dict in dates file to change int day to ordinal
+    day = Dates.get(now.day)
 
     if minute == 0:
         minute = 'o clock'
@@ -40,6 +44,7 @@ def get_datetime():
     else:
         pass
 
+    # builds time string
     time_str = 'Today is {} {}. The current time is {} {} {}. '.format(month, day, hour, minute, period)
 
     return str(time_str)
@@ -60,6 +65,7 @@ def get_weather():
     # build string for temp
     temp_str = 'The current temperature is {} degrees.'.format(curr_temp)
     return str(temp_str)
+
 
 def get_intro():
     """Returns mp3 add to play at intro."""
