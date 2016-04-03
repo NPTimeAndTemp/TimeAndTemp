@@ -3,11 +3,11 @@ from twilio import twiml
 from datetime import datetime
 import xml.etree.ElementTree as ET
 import urllib2
-import os.path
+from os import path, getenv
 from Dates import Dates
 
 app = Flask(__name__)
-
+port = int(getenv('VCAP_APP_PORT', 8080))
 
 @app.route("/", methods=['GET', 'POST'])
 def voice_response():
@@ -70,11 +70,11 @@ def get_weather():
 def get_intro():
     """Returns mp3 add to play at intro."""
     # check to see if file exists
-    if os.path.isfile('./static/intro/Intro.mp3'):
+    if path.isfile('./static/intro/Intro.mp3'):
         return './static/intro/Intro.mp3'
     # if the file doesn't exist, one wait tone will be passed
     else:
         return 'digits = "w"'
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0')
+    app.run(host='0.0.0.0',port=port)
