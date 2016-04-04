@@ -1,6 +1,7 @@
 from flask import Flask
 from twilio import twiml
 from datetime import datetime
+import pytz
 import xml.etree.ElementTree as ET
 import urllib2
 from os import path, getenv
@@ -26,8 +27,10 @@ def voice_response():
 
 def get_datetime():
     """Get and Build out date time string"""
+    local_tz = pytz.timezone('US/Central')
     # set now as current time
     now = datetime.now()
+    now = now.replace(tzinfo=pytz.utc).astimezone(local_tz)
     # set and format hour month and period (am/pm)
     hour = datetime.strftime(now, '%I')
     month = datetime.strftime(now, '%B')
