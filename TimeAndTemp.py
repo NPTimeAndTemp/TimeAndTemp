@@ -17,11 +17,11 @@ def voice_response():
     # play ad
     resp.play(get_intro())
     # give time
-    resp.say(get_datetime(), voice='female', language='us')
+    resp.say(get_datetime(), voice='alice', language='us')
     # pause 1 seconds between time and temp
     resp.pause(length=1)
     # give temp
-    resp.say(get_weather(), voice='female', language='us')
+    resp.say(get_weather(), voice='alice', language='us')
     return str(resp)
 
 
