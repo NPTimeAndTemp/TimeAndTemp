@@ -32,9 +32,14 @@ def get_datetime():
     now = datetime.now()
     now = now.replace(tzinfo=pytz.utc).astimezone(local_tz)
     # set and format hour month and period (am/pm)
-    hour = datetime.strftime(now, '%I')
+    hour = datetime.strftime(now, '%-I')
     month = datetime.strftime(now, '%B')
     period = datetime.strftime(now, '%p')
+
+    if period == 'am':
+        period = 'a m'
+    else:
+        pass
 
     minute = now.minute
     # uses dates dict in dates file to change int day to ordinal
