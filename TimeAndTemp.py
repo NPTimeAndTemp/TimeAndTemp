@@ -36,7 +36,7 @@ def get_datetime():
     month = datetime.strftime(now, '%B')
     period = datetime.strftime(now, '%p')
 
-    if period == 'am':
+    if period == 'AM':
         period = 'a m'
     else:
         pass
